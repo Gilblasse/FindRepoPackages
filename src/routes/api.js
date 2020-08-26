@@ -4,6 +4,7 @@ import { languageType } from '../app/EvalRepo'
 
 const router = express.Router();
 
+// Front-End Gets Repo Language through rest: https://api.github.com/repos/:owner/:repo  and sends info via Body parser
 router.post('/repo-packages-info', async (req, res) => {
 
     const owner = req.body.owner
@@ -13,7 +14,7 @@ router.post('/repo-packages-info', async (req, res) => {
     const baseUrl = `https://github.com/${owner}/${repo}`
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    var packageType = languageType[language]
+    const packageType = languageType[language]
 
     let data = packageType.url ? await packageType.exe(baseUrl, page, packageType) : "Not Found "
 
