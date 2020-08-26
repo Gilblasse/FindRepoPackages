@@ -2,15 +2,18 @@ import latestVersion from 'latest-version'
 
 
 const getPackageJson = async (baseUrl, page, packageType) => {
-    await page.goto(`${baseUrl}${packageType.url}`, { waitUntil: 'networkidle2' } );
-    
-    const data = await page.evaluate(() =>{
-        const repoPackageTable = document.querySelector('table').innerText
-        const repoPackage = JSON.parse(repoPackageTable)
-        
-        // const packageVersion = await latestVersion('@testing-library/jest-dom')
-        return repoPackage
-    })
+    const response = await page.goto(`${baseUrl}${packageType.url}`, { waitUntil: 'networkidle2' } );
+    let data = "Not Found"
+
+    if(response._status == 200){
+        data = await page.evaluate(() =>{
+            const repoPackageTable = document.querySelector('table').innerText
+            const repoPackage = JSON.parse(repoPackageTable)
+            
+            // const packageVersion = await latestVersion('@testing-library/jest-dom')
+            return repoPackage
+        })
+    }
 
     return data
 }

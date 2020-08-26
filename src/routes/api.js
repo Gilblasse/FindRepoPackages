@@ -16,7 +16,7 @@ router.post('/repo-packages-info', async (req, res) => {
     const page = await browser.newPage();
     const packageType = languageType[language]
 
-    let data = packageType.url ? await packageType.exe(baseUrl, page, packageType) : "Not Found "
+    let data = packageType ? await packageType.exe(baseUrl, page, packageType) : "Not Found "
 
     browser.close();
     res.send({data})
