@@ -4,7 +4,8 @@
   "description": "find pacakges realted to repo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node src/index"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,11 @@
     "express": "^4.17.1",
     "latest-version": "^5.1.0",
     "puppeteer": "^5.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "nodemon": "^2.0.4"
   }
 }
