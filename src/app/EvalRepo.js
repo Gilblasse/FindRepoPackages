@@ -1,16 +1,23 @@
 import latestVersion from 'latest-version'
 
 
-const getPackageJson = () => {
-    const repoPackageTable = document.querySelector('table').innerText
-    const repoPackage = JSON.parse(repoPackageTable)
+const getPackageJson = async (baseUrl, page, packageType) => {
+    await page.goto(`${baseUrl}${packageType.url}`, { waitUntil: 'networkidle2' } );
     
-    // const packageVersion = await latestVersion('@testing-library/jest-dom')
-    return repoPackage
+    const data = await page.evaluate(() =>{
+        const repoPackageTable = document.querySelector('table').innerText
+        const repoPackage = JSON.parse(repoPackageTable)
+        
+        // const packageVersion = await latestVersion('@testing-library/jest-dom')
+        return repoPackage
+    })
+
+    return data
 }
 
 
-const getGemFile = () => {
+const getGemFile = async (baseUrl, page, packageType) => {
+    await page.goto(`${baseUrl}${packageType.url}`, { waitUntil: 'networkidle2' } );
     // Scrape Gem file
 }
 
