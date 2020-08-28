@@ -1,7 +1,7 @@
 "use strict";
 import express from 'express'
 import bodyParser from 'body-parser'
-
+import router from './routes/api'
 
 // set up express app
 const app = express();
@@ -26,7 +26,7 @@ app.get('/', (req,res) => {
 })
 
 // initialize routes
-app.use('/api/v1', './routes/api');
+app.use('/api/v1',  router);
 
 // listen for requests
 app.listen(port, function(){
