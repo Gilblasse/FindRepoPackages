@@ -1,7 +1,6 @@
 "use strict";
-const express = require("express")
-const bodyParser = require("bodyParser")
-
+import express from 'express'
+import bodyParser from 'body-parser'
 
 
 // set up express app
@@ -23,7 +22,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req,res) => {
-    res.send({grettings: "Hello World"})
+    res.send({grettings: "Hello"})
 })
 
 // initialize routes

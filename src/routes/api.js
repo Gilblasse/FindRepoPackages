@@ -1,6 +1,6 @@
-const express = require("express")
-const puppeteer = require("puppeteer")
-const languageType = require("../app/EvalRepo")
+import express from 'express'
+import puppeteer from 'puppeteer'
+import { languageType } from '../app/EvalRepo'
 
 const router = express.Router();
 

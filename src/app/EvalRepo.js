@@ -1,4 +1,4 @@
-const latestVersion = require("latest-version")
+import latestVersion from 'latest-version'
 
 
 // SCRAPE JAVASCRIPT PACAKGES
