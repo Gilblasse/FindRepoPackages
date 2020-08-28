@@ -85,7 +85,7 @@ const getPythonDependencies = async (baseUrl, page, packageType) => {
 
 
 
-export const languageType = {
+module.exports = languageType = {
     "JavaScript": {url: "/blob/master/package.json", exe: getPackageJson},
     "Ruby": {url: "/blob/master/Gemfile", exe: getGemFile},
     "Python": {url: "/blob/master/setup.py", exe: getPythonDependencies}
