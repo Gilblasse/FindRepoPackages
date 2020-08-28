@@ -2,7 +2,7 @@
   "name": "findrepopackages",
   "version": "1.0.0",
   "engines": {
-    "node": "12.x"
+    "node": "14.1.0"
   },
   "description": "find pacakges realted to repo",
   "main": "index.js",
