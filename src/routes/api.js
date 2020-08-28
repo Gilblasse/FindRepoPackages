@@ -23,4 +23,4 @@ router.post('/repo-packages-info', async (req, res) => {
 });
 
 
-module.exports = router;
+export default router;
