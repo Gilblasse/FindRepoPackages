@@ -9,7 +9,7 @@ const bodyParser = require('body-parser')
 
 // set up express app
 const app = express();
-const port = process.env.port || 4000
+const PORT = process.env.PORT || 5000
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,8 +33,8 @@ app.get('/', (req,res) => {
 app.use('/api/v1',  require('./routes/api.js'));
 
 // listen for requests
-app.listen(port, function(){
-    console.log(`Now listening for requests on - http://localhost:${port}/`);
+app.listen(PORT, function(){
+    console.log(`Now listening for requests on port - ${PORT}`);
 });
 
 module.exports = app;
