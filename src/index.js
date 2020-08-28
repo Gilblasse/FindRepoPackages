@@ -26,7 +26,7 @@ app.get('/', (req,res) => {
 })
 
 // initialize routes
-app.use('/api/v1', require('./routes/api'));
+app.use('/api/v1', './routes/api');
 
 // listen for requests
 app.listen(port, function(){
