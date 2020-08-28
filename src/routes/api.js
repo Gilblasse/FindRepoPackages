@@ -16,7 +16,11 @@ router.post('/repo-packages-info', async (req, res) => {
     const language = req.body.language
 
     const baseUrl = `https://github.com/${owner}/${repo}`
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        ignoreDefaultArgs: ['--disable-extensions'],
+        args: ['--no-sandbox']
+      });
+      
     const page = await browser.newPage();
     const packageType = languageType[language]
 
