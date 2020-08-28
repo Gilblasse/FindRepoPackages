@@ -1,6 +1,9 @@
 {
   "name": "findrepopackages",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
   "description": "find pacakges realted to repo",
   "main": "index.js",
   "scripts": {
@@ -12,7 +15,6 @@
   },
 
   
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Gilblasse/FindRepoPackages.git"
