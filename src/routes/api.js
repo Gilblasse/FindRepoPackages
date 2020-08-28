@@ -4,7 +4,7 @@
 
 const express = require('express');
 const puppeteer = require('puppeteer');
-const languageType = require('./app/EvalRepo.js');
+const languageType = require('../app/EvalRepo');
 
 const router = express.Router();
 
