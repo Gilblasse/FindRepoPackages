@@ -17,14 +17,17 @@ const getPackageJson = async (baseUrl, page, packageType) => {
         })
 
         const depends = Object.entries(scrapedData.dependencies)
+        console.log({depends})
 
         for(let i=0; i < depends.length; i++ ){
             const latestV = await latestVersion(depends[i][0])
             arr.push([...depends[i],latestV])
         }
+
+        console.log({afterArr: arr})
     }
 
-
+    console.log({arr})
     return response._status == 200 ? arr : errorMessage
 }
 
@@ -38,6 +41,7 @@ const getGemFile = async (baseUrl, page, packageType) => {
     let gems;
 
     console.log({status: response._status})
+    console.log({initialGems: gems})
 
     if(response._status == 200){
         gems = await page.evaluate(() =>{
@@ -52,8 +56,11 @@ const getGemFile = async (baseUrl, page, packageType) => {
 
             return gemsData
         })
+
+        console.log({gems})
     }
 
+    console.log({endGems: gems})
     return response._status == 200 ? gems : errorMessage
 }
 
