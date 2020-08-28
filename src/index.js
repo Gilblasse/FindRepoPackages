@@ -20,6 +20,11 @@ app.use((req, res, next) => {
     }
     next();
 })
+
+app.get('/', (req,res) => {
+    res.send({grettings: "Hello World"})
+})
+
 // initialize routes
 app.use('/api/v1', require('./routes/api'));
 
