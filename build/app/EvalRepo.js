@@ -1,10 +1,5 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.languageType = void 0;
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -21,7 +16,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var latestVersion = require("latest-version"); // SCRAPE JAVASCRIPT PACAKGES
+// import latestVersion from 'latest-version'
+var latestVersion = require('latest-version'); // SCRAPE JAVASCRIPT PACAKGES
 
 
 var getPackageJson = /*#__PURE__*/function () {
@@ -43,7 +39,7 @@ var getPackageJson = /*#__PURE__*/function () {
             arr = [];
 
             if (!(response._status == 200)) {
-              _context.next = 19;
+              _context.next = 21;
               break;
             }
 
@@ -57,30 +53,41 @@ var getPackageJson = /*#__PURE__*/function () {
           case 8:
             scrapedData = _context.sent;
             _depends = Object.entries(scrapedData.dependencies);
+            console.log({
+              depends: _depends
+            });
             i = 0;
 
-          case 11:
+          case 12:
             if (!(i < _depends.length)) {
-              _context.next = 19;
+              _context.next = 20;
               break;
             }
 
-            _context.next = 14;
+            _context.next = 15;
             return latestVersion(_depends[i][0]);
 
-          case 14:
+          case 15:
             latestV = _context.sent;
             arr.push([].concat(_toConsumableArray(_depends[i]), [latestV]));
 
-          case 16:
+          case 17:
             i++;
-            _context.next = 11;
+            _context.next = 12;
             break;
 
-          case 19:
+          case 20:
+            console.log({
+              afterArr: arr
+            });
+
+          case 21:
+            console.log({
+              arr: arr
+            });
             return _context.abrupt("return", response._status == 200 ? arr : errorMessage);
 
-          case 20:
+          case 23:
           case "end":
             return _context.stop();
         }
@@ -112,13 +119,16 @@ var getGemFile = /*#__PURE__*/function () {
             console.log({
               status: response._status
             });
+            console.log({
+              initialGems: gems
+            });
 
             if (!(response._status == 200)) {
-              _context2.next = 9;
+              _context2.next = 11;
               break;
             }
 
-            _context2.next = 8;
+            _context2.next = 9;
             return page.evaluate(function () {
               var tableList = document.querySelectorAll('tr');
               var trs = Object.values(tableList).map(function (tr) {
@@ -136,13 +146,19 @@ var getGemFile = /*#__PURE__*/function () {
               return gemsData;
             });
 
-          case 8:
-            gems = _context2.sent;
-
           case 9:
+            gems = _context2.sent;
+            console.log({
+              gems: gems
+            });
+
+          case 11:
+            console.log({
+              endGems: gems
+            });
             return _context2.abrupt("return", response._status == 200 ? gems : errorMessage);
 
-          case 10:
+          case 13:
           case "end":
             return _context2.stop();
         }
@@ -214,7 +230,7 @@ var getPythonDependencies = /*#__PURE__*/function () {
   };
 }();
 
-var languageType = {
+module.exports = languageType = {
   "JavaScript": {
     url: "/blob/master/package.json",
     exe: getPackageJson
@@ -228,5 +244,4 @@ var languageType = {
     exe: getPythonDependencies
   }
 };
-exports.languageType = languageType;
 //# sourceMappingURL=EvalRepo.js.map

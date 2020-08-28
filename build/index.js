@@ -1,12 +1,15 @@
 "use strict";
 
-var express = require("express");
+var express = require('express');
 
-var bodyParser = require("bodyParser"); // set up express app
+var bodyParser = require('body-parser'); // import express from 'express'
+// import bodyParser from 'body-parser'
+// import router from './routes/api'
+// set up express app
 
 
 var app = express();
-var port = process.env.port || 4000;
+var PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -24,14 +27,14 @@ app.use(function (req, res, next) {
 });
 app.get('/', function (req, res) {
   res.send({
-    grettings: "Hello World"
+    grettings: "Hello"
   });
 }); // initialize routes
 
-app.use('/api/v1', require('./routes/api')); // listen for requests
+app.use('/api/v1', require('./routes/api.js')); // listen for requests
 
-app.listen(port, function () {
-  console.log("Now listening for requests on - http://localhost:".concat(port, "/"));
+app.listen(PORT, function () {
+  console.log("Now listening for requests on port - ".concat(PORT));
 });
 module.exports = app;
 //# sourceMappingURL=index.js.map

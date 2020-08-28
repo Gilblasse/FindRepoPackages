@@ -4,11 +4,14 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var express = require("express");
+// import express from 'express'
+// import puppeteer from 'puppeteer'
+// import { languageType } from '../app/EvalRepo.mjs'
+var express = require('express');
 
-var puppeteer = require("puppeteer");
+var puppeteer = require('puppeteer');
 
-var languageType = require("../app/EvalRepo");
+var languageType = require('../app/EvalRepo');
 
 var router = express.Router(); // Front-End Gets Repo Language through rest: https://api.github.com/repos/:owner/:repo  and sends info via Body parser
 
@@ -24,7 +27,10 @@ router.post('/repo-packages-info', /*#__PURE__*/function () {
             language = req.body.language;
             baseUrl = "https://github.com/".concat(owner, "/").concat(repo);
             _context.next = 6;
-            return puppeteer.launch();
+            return puppeteer.launch({
+              ignoreDefaultArgs: ['--disable-extensions'],
+              args: ['--no-sandbox']
+            });
 
           case 6:
             browser = _context.sent;
@@ -70,5 +76,5 @@ router.post('/repo-packages-info', /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }());
-module.exports = router;
+module.exports = router; // export default router;
 //# sourceMappingURL=api.js.map
