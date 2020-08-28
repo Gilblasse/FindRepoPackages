@@ -4,7 +4,6 @@
   "engines": {
     "node": "12.x"
   },
-  "type": "module",
   "description": "find pacakges realted to repo",
   "main": "index.js",
   "scripts": {

@@ -1,7 +1,9 @@
 "use strict";
-import express from 'express'
-import bodyParser from 'body-parser'
-import router from './routes/api'
+const express = require('express')
+const bodyParser = require('body-parser')
+// import express from 'express'
+// import bodyParser from 'body-parser'
+// import router from './routes/api'
 
 // set up express app
 const app = express();
@@ -26,7 +28,7 @@ app.get('/', (req,res) => {
 })
 
 // initialize routes
-app.use('/api/v1',  router);
+app.use('/api/v1',  require('./routes/api.mjs'));
 
 // listen for requests
 app.listen(port, function(){
